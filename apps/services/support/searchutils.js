@@ -2,17 +2,17 @@ var __constants=require('../../keywords').constants;
 var __queryb=require('./querybuilders');
 var __filterb=require('./filterbuilders');
 var _=require('underscore');
-
+var ejs=require('elastic.js');
 
 var DEFAULT_SIZE=10;
-var genquery=function (must,must_not){
+var genquery=function (boolQuery,hasQuery){
 	var query;
-	if(must.length==0 && must_not.length==0){
-		query=__queryb.maq;
-	}else if(must_not.length==0 && !(must.length==0)){
-		query= {must : must} ;
-	}else if(must.length==0 && !(must_not.length==0)){
-		query= {must_not : must_not};
+	if(!hasQuery){
+		__queryb.maq(function(q){
+			query=q;
+		});
+	}else{
+		query=boolQuery;
 	}
 	return query;
 
@@ -20,10 +20,12 @@ var genquery=function (must,must_not){
 var genfilter=function(filters){
 	var fil;
 	if(filters.length>0){
-		fil= {and: filters};
+		fil= ejs.AndFilter(filters);
 
 	}else{
-		fil=__filterb.maf; 
+		__filterb.maf(function(f){
+			fil=f;
+		}); 
 	}
 	return fil;
 
@@ -45,24 +47,24 @@ var get_key=function(str){
 
 }
 var makequery=function(request){
-	var must_q=[];
-	var must_notq=[];
+	var hasQuery=false;
+	var boolQuery=ejs.BoolQuery();
 	for (key in request){
 		var operator=get_operator(key);
 		var key_val=get_key(key);
 
-
 		if(operator in __queryb){
+			hasQuery=true;
 			__queryb[operator](key_val,request[key],function(query,fn){
 				if(fn == 'must'){
-					must_q.push(query);
+					boolQuery.must(query);
 				}else if(fn == 'must_not'){
-					must_not.push(query);
+					boolQuery.mustNot(query);
 				}
 			});
 		}
 	}
-	return genquery(must_q,must_notq);
+	return genquery(boolQuery,hasQuery);
 	// request finalQuery;
 };
 
@@ -73,11 +75,11 @@ var makefilter=function(request){
 		var operator=get_operator(key);
 		var key_val=get_key(key);
 
-		console.log(operator);
-		console.log(key);
 		if(operator in __filterb){
-			__filterb[operator](key_val,request[key],function(query){
-				andfilter.push(query);
+			__filterb[operator](key_val,request[key],function(query,success){
+				if(success){
+					andfilter.push(query);
+				}
 			});
 		}
 	}
@@ -109,7 +111,7 @@ var getsource=function(request){
 	if ('_get' in request) {
 		return request['_get'];
 	}else{
-		return '';
+		return '*';
 	}
 };
 
@@ -117,14 +119,14 @@ var makebuilder=function(request,callback){
 	var size=get_size(request);
 	var source=getsource(request);
 	var formattedrequest=cleanparams(request);
+	var srb=ejs.Request().query(makequery(formattedrequest)).filter(makefilter(formattedrequest))
+		.size(size);
 
-	var srb={
-		'size' : size,
-		'query' : makequery(formattedrequest),
-		'post_filter' : makefilter(formattedrequest),
-		'_source' : source
-	};
-	callback(srb,true);
+	if(source!='*'){
+		srb.fields(source);
+	}
+	
+	callback(srb.toString(),true);
 };
 
 module.exports=makebuilder;

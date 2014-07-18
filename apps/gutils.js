@@ -28,10 +28,17 @@ var sendmsgasjson = function (status,msg,res) {
 	res.end(JSON.stringify(jsontosend));
 };
 
+var sendjsonobj=function(status,obj,res){
+	res.setHeader('Content-Type', 'application/json'); 
+	res.status(status);
+	res.end(JSON.stringify(obj));
+};
+
 module.exports= {
 	sendjson : sendmsgasjson,
 	e404: function(msg,res){
 		senderrasjson(404,msg,res);
 	},
-	sendquery: queryjson
+	sendquery: queryjson,
+	sendjsonobj : sendjsonobj
 };

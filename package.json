@@ -14,7 +14,10 @@
     , "less": ">= 0.0.1"
     , "ejs": ">= 0.0.1"
     , "connect-auth": ">=0.4.1",
-    "underscore" : ">=1.6.0"
+    "underscore" : ">=1.6.0",
+    "elastic.js" : ">=1.1.1",
+    "elasticsearch" : ">=2.3.0",
+    "mocha" : "1.20.1" 
   },
   "author": "gererIO",
   "license": "ISC"

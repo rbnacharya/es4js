@@ -1,14 +1,11 @@
+var ejs=require('elastic.js');
+
 var querybuilders={
-	'startsWith':function(k,v,cb){
-		var query={
-			match :{
-				k : v
-			}
-		};
-		cb(query,'must');
+	startsWith:function(k,v,cb){
+		cb(ejs.PrefixQuery(k,v),'must');
 	},
-	maq:{
-		"match_all": {}
+	maq:function(cb){
+		cb(ejs.MatchAllQuery())
 	}
 
 };
