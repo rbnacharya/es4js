@@ -1,0 +1,21 @@
+{
+  "name": "api",
+  "version": "0.0.1",
+  "description": "Api for gerer",
+  "main": "app.js",
+  "scripts": {
+    "test": "test app.js"
+  },
+  "keywords": [
+    "gerer"
+  ],
+   "dependencies": {
+      "express": "2.5.5"
+    , "less": ">= 0.0.1"
+    , "ejs": ">= 0.0.1"
+    , "connect-auth": ">=0.4.1",
+    "underscore" : ">=1.6.0"
+  },
+  "author": "gererIO",
+  "license": "ISC"
+}
