@@ -1,5 +1,5 @@
 var __gutils=require('./../apps/gutils');
-var __search=require('./../apps/services/search');
+var __search=require('./../apps/services/search/search');
 /*
  * GET home page.
  */
@@ -15,6 +15,7 @@ module.exports = function(app) {
 
 	});
 	app.get('/:clientId/api/search/:type',function(req,res){
+		req.params['report']='search';
 		__search(req,res);
 
 	});

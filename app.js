@@ -4,11 +4,20 @@
  */
 
 var express = require('express');
+var config= require('./conf/config')();
 
 var app = module.exports = express.createServer();
 
-require('./routes/routes.js')(app);
 
+var logger=function(req,res,next){
+	console.log('[Request] '+req.url + ' is processed');
+	next();
+};
+
+app.use(logger);
+
+
+require('./routes/routes.js')(app);
 // Configuration
 
 app.configure(function(){
@@ -20,13 +29,13 @@ app.configure(function(){
   app.use(express.static(__dirname + '/public'));
 });
 
-app.configure('development', function(){
+app.configure('dev', function(){
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
 });
 
-app.configure('production', function(){
+app.configure('prod', function(){
   app.use(express.errorHandler()); 
 });
 
-app.listen(3000);
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+app.listen(config.port);
+console.log("Express server listening on port %d in %s mode", config.port, config.env);

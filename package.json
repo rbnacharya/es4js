@@ -1,24 +1,31 @@
 {
-  "name": "api",
-  "version": "0.0.1",
-  "description": "Api for gerer",
-  "main": "app.js",
-  "scripts": {
-    "test": "test app.js"
-  },
-  "keywords": [
-    "gerer"
-  ],
-   "dependencies": {
-      "express": "2.5.5"
-    , "less": ">= 0.0.1"
-    , "ejs": ">= 0.0.1"
-    , "connect-auth": ">=0.4.1",
-    "underscore" : ">=1.6.0",
-    "elastic.js" : ">=1.1.1",
-    "elasticsearch" : ">=2.3.0",
-    "mocha" : "1.20.1" 
-  },
-  "author": "gererIO",
-  "license": "ISC"
+    "name": "es4js",
+    "version": "0.0.1",
+    "description": "NodeJS layer in front of elasticsearch",
+    "main": "app.js",
+    "scripts": {
+        "test": "node test/test1.js",
+        "start": "node app.js"
+    },
+    "keywords": [
+        "es4js"
+    ],
+    "dependencies": {
+        "express": "2.5.5",
+        "less": ">= 0.0.1",
+        "ejs": ">= 0.0.1",
+        "connect-auth": ">=0.4.1",
+        "underscore": ">=1.6.0",
+        "elastic.js": ">=1.1.1",
+        "elasticsearch": ">=2.3.0"
+    },
+    "devDependencies": {
+        "mocha": "1.20.1"
+    },
+    "author": "rbnacharya",
+    "license": "GPL V2.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rbnacharya/es4js.git"
+    }
 }
