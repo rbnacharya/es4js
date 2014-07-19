@@ -41,11 +41,23 @@ _Sample request and responses_
 - _Just give me pull request_
 - _If you want to worktogether, mail me : rbnacharya@gmail.com_
 
-### Donate using bitcoin
+### Donate 
+- _We are trying to complete the project and host it, but out of funds , help us_
 <div>
+  using bitcoin
   <a href="bitcoin:1KFUJN2uYBARu2kpSxhTKf13EvBhHPBjXx?amount=0.5&label=Donate">
   <img src="http://gary-rowe.com/img/donation.png" ></a>
 </div>
+
+<div>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="V3UMNNE8KMC88">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+<div>
 
 ## License
 
