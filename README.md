@@ -41,6 +41,12 @@ _Sample request and responses_
 - _Just give me pull request_
 - _If you want to worktogether, mail me : rbnacharya@gmail.com_
 
+### Donate using bitcoin
+<div>
+  <a href="bitcoin:1KFUJN2uYBARu2kpSxhTKf13EvBhHPBjXx?amount=0.5&label=Donate">
+  <img src="http://gary-rowe.com/img/donation.png" ></a>
+</div>
+
 ## License
 
 This software is licensed under the GPL 2 license.
