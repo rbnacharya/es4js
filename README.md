@@ -16,6 +16,10 @@ _
 _Test is done using mocha `npm test` to run test_
 
 ## Usage. 
+_Configure the application_
+
+- _There is a file in `conf/config.js`, there change your elasticsearch host and port, then you are ready to go._
+
 
 _Sample request and responses_
 
