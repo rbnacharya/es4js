@@ -43,11 +43,7 @@ _Sample request and responses_
 
 ### Donate 
 - _We are trying to complete the project and host it, but out of funds , help us, using bitcoin_
-<div>
-    <a href="bitcoin:1KFUJN2uYBARu2kpSxhTKf13EvBhHPBjXx?amount=0.5&label=Donate">
-  <img src="http://gary-rowe.com/img/donation.png" ></a>
-</div>
-
+<div><div><div><img alt="Incorrect QR code input" src="http://www.btcfrog.com/qr/bitcoinPNG.php?address=1KFUJN2uYBARu2kpSxhTKf13EvBhHPBjXx&label=es4js&message=Node js application for es&amount=0.05" style="height: 200px;width 200px" /></div></div></div>
 
 ## License
 
